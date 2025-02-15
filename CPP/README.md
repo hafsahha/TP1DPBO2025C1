@@ -7,4 +7,4 @@ Maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. **Aami
 ## **Dokumentasi**
 ![Screenshot Program](Dokumentasi/1.png)
 
-![Screenshot Program](Dokumentasi/2.png)
+![Screenshot Program](Dokumentasi/0.png)
