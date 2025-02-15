@@ -5,3 +5,6 @@ Saya, **Hafsah Hamidah** (NIM: 2311474), mengerjakan Latihan Modul 1 dalam mata 
 Maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. **Aamiin.**  
 
 ## **Dokumentasi**
+![Screenshot Program](Dokumentasi/1.png)
+
+![Screenshot Program](Dokumentasi/2.png)
