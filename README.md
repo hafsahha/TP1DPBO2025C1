@@ -38,8 +38,8 @@ Program akan terus berjalan sampai pengguna memasukkan perintah `exit` untuk kel
 ---
 
 ## **Dokumentasi JAVA**
-![Screenshot Program](JAVA/Dokumentasi/java_1.png)
+![Screenshot Program](JAVA/Dokumentasi/java 1.png)
 
-![Screenshot Program](JAVA/Dokumentasi/java_2.png)
+![Screenshot Program](JAVA/Dokumentasi/java 2.png)
 
 
