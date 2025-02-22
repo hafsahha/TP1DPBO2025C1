@@ -1,7 +1,7 @@
-from Petshop import Petshop  # Mengimpor kelas Petshop dari modul Petshop
+from Petshop import Petshop  
 
 def display_menu():
-    # Menampilkan menu pilihan kepada pengguna
+    # Menampilkan daftar perintah yang bisa digunakan
     print("\nMasukkan Command yang diinginkan:")
     print("- show  : Menampilkan daftar produk")
     print("- add   : Menambahkan produk baru")
@@ -11,7 +11,7 @@ def display_menu():
     print("- exit  : Keluar dari program")
 
 def show_products(data):
-    # Menampilkan daftar produk yang ada dalam sistem
+    # Menampilkan daftar produk jika ada, jika kosong tampilkan pesan
     if not data:
         print("Tidak ada produk yang tersedia.")
     else:
@@ -19,11 +19,12 @@ def show_products(data):
         print("| NO  | ID   | Nama         | Kategori    | Harga        |")
         print("+--------------------------------------------------------+")
         for i, product in enumerate(data, start=1):
+            # Menampilkan setiap produk dalam format tabel
             print(f"| {i:<3} | {product.get_id():<4} | {product.get_name():<12} | {product.get_category():<11} | Rp{product.get_price():<10} |")
         print("+--------------------------------------------------------+")
 
 def main():
-    # Data awal produk yang tersedia
+    # Inisialisasi daftar produk awal
     data = [
         Petshop(1, "RoyalCanin", "Makanan", 65000),
         Petshop(2, "EverClean", "Pasir", 30000),
@@ -33,70 +34,85 @@ def main():
     ]
     last_id = 5  # Menyimpan ID terakhir yang digunakan
 
-    display_menu()
-    while True:
-        command = input("\nMasukkan perintah: ").strip().lower()  # Membaca perintah pengguna
+    display_menu()  # Menampilkan menu pertama kali
+    running = True  # Variabel kontrol untuk loop utama
+    while running:
+        command = input("\nMasukkan perintah: ").strip().lower()  # Input perintah dari user
 
         if command == "add":
-            # Menambahkan produk baru
+            # Menambahkan produk baru ke dalam daftar
             name = input("Masukkan Nama Produk: ")
             category = input("Masukkan Kategori: ")
             price = float(input("Masukkan Harga: "))
             last_id += 1  # Menambah ID baru
-            data.append(Petshop(last_id, name, category, price))  # Menambahkan produk ke daftar
+            data.append(Petshop(last_id, name, category, price))  # Menambahkan produk
             print(f"Produk berhasil ditambahkan dengan ID: {last_id}")
-        
+
         elif command == "del":
             # Menghapus produk berdasarkan nama
             search = input("Masukkan nama produk yang ingin dihapus: ")
-            for product in data:
-                if product.get_name().lower() == search.lower():
-                    data.remove(product)  # Menghapus produk dari daftar
+            found = False  # Variabel untuk menandai apakah produk ditemukan
+            it = 0  # Inisialisasi indeks
+            while it < len(data) and not found:
+                if data[it].get_name().lower() == search.lower():
+                    del data[it]  # Hapus produk jika ditemukan
                     print("Produk berhasil dihapus.")
-                    break
-            else:
+                    found = True  # Tandai bahwa produk sudah ditemukan
+                else:
+                    it += 1  # Lanjut ke produk berikutnya
+            if not found:
                 print("Produk tidak ditemukan.")
-        
+
         elif command == "update":
-            # Memperbarui atribut produk
+            # Memperbarui atribut produk berdasarkan nama
             search = input("Masukkan nama produk yang ingin diperbarui: ")
-            for product in data:
-                if product.get_name().lower() == search.lower():
+            found = False  # Variabel untuk menandai apakah produk ditemukan
+            it = 0  # Inisialisasi indeks
+            while it < len(data) and not found:
+                if data[it].get_name().lower() == search.lower():
+                    found = True  # Tandai bahwa produk ditemukan
                     pilihan = input("Pilih atribut yang ingin diubah (nama/kategori/harga): ")
                     if pilihan == "nama":
-                        product.set_name(input("Masukkan Nama baru: "))
+                        data[it].set_name(input("Masukkan Nama baru: "))  # Update nama produk
                     elif pilihan == "kategori":
-                        product.set_category(input("Masukkan Kategori baru: "))
+                        data[it].set_category(input("Masukkan Kategori baru: "))  # Update kategori
                     elif pilihan == "harga":
-                        product.set_price(float(input("Masukkan Harga baru: ")))
+                        data[it].set_price(float(input("Masukkan Harga baru: ")))  # Update harga
                     else:
-                        print("Atribut tidak dikenali.")
+                        print("Atribut tidak dikenali.")  # Jika input atribut salah
                     print("Produk berhasil diperbarui.")
-                    break
-            else:
+                else:
+                    it += 1  # Lanjut ke produk berikutnya
+            if not found:
                 print("Produk tidak ditemukan.")
-        
+
         elif command == "show":
-            # Menampilkan daftar produk yang tersedia
+            # Menampilkan semua produk yang ada
             show_products(data)
-        
+
         elif command == "find":
             # Mencari produk berdasarkan nama
             search = input("Masukkan nama produk yang ingin dicari: ")
-            for product in data:
-                if product.get_name().lower() == search.lower():
-                    print(f"\nProduk ditemukan:\nID: {product.get_id()}\nNama: {product.get_name()}\nKategori: {product.get_category()}\nHarga: Rp{product.get_price()}")
-                    break
-            else:
+            found = False  # Variabel untuk menandai apakah produk ditemukan
+            it = 0  # Inisialisasi indeks
+            while it < len(data) and not found:
+                if data[it].get_name().lower() == search.lower():
+                    # Jika produk ditemukan, tampilkan detailnya
+                    print(f"\nProduk ditemukan:\nID: {data[it].get_id()}\nNama: {data[it].get_name()}\nKategori: {data[it].get_category()}\nHarga: Rp{data[it].get_price()}")
+                    found = True
+                else:
+                    it += 1  # Lanjut ke produk berikutnya
+            if not found:
                 print("Produk tidak ditemukan.")
-        
+
         elif command == "exit":
             # Keluar dari program
             print("Keluar dari program.")
-            break
-        
+            running = False  # Menghentikan loop utama
+
         else:
+            # Jika perintah tidak dikenali
             print("Command tidak dikenali.")
 
 if __name__ == "__main__":
-    main()  # Menjalankan program utama
+    main()
