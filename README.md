@@ -30,3 +30,16 @@ Program akan terus berjalan sampai pengguna memasukkan perintah `exit` untuk kel
 
 ---
 
+## **Dokumentasi CPP**
+![Screenshot Program](CPP/Dokumentasi/1.png)
+
+![Screenshot Program](CPP/Dokumentasi/2.png)
+
+---
+
+## **Dokumentasi JAVA**
+![Screenshot Program](JAVA/Dokumentasi/java_1.png)
+
+![Screenshot Program](JAVA/Dokumentasi/java_2.png)
+
+
