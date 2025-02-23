@@ -52,6 +52,7 @@ Program akan terus berjalan sampai pengguna memasukkan perintah `exit` untuk kel
 ---
 
 ## **Dokumentasi PHP**
-![Screenshot Program](PHP/Dokumentasi/php1.mp4)
+[Video Dokumentasi PHP](PHP/Dokumentasi/php1.mp4)
+
 
 
